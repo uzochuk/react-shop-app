@@ -1,12 +1,15 @@
 import React from "react";
 import CakeContainer from "./components/CakeContainer";
-
+import {Provider} from ' react-redux'
+import store from "./redux/store";
 
 const App = () =>{
     return(
-        <div>
-           <CakeContainer></CakeContainer>
-        </div>
+        <Provider store = {store}>
+            <div>
+            <CakeContainer></CakeContainer>
+            </div>
+        </Provider>
     )
 }
 

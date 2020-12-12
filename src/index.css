@@ -21,7 +21,7 @@ header{
     color: white;
     display: flex;
     align-items: center;
-    align-content: center;
+    padding: .7rem;
 }
 
 a{
@@ -51,3 +51,4 @@ input, select, textarea, body{
     font-size: 1.6rem;
     font-family: 'Titillium Web', sans-serif;;
 }
+

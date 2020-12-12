@@ -1,16 +1,17 @@
-import React from "react";
-import CakeContainer from "./components/CakeContainer";
-import {Provider} from ' react-redux'
-import store from "./redux/store";
+import React from 'react'
 
-const App = () =>{
-    return(
-        <Provider store = {store}>
-            <div>
-            <CakeContainer></CakeContainer>
-            </div>
-        </Provider>
+export default function App() {
+    return (
+        <div className='grid-container'>
+            <header>
+                <a href='/'>React Shopping Cart</a>
+            </header>
+            <main>
+                product list
+            </main>
+            <footer>
+                <p>&copy; {new Date().getFullYear()}</p>
+            </footer>
+        </div>
     )
 }
-
-export default App

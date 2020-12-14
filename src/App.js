@@ -19,6 +19,7 @@ export default class App extends Component {
                     <a href='/'>React Shopping Cart</a>
                 </header>
                 <main>
+                     <div>my filter</div>
                       <FilterComponent></FilterComponent>
                       <ProductsComponent products={this.state.products}></ProductsComponent>
                 </main>

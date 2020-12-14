@@ -1,54 +1,104 @@
+/* STYLING IS MOBILE FIRST */
+
 html {
-    font-size: 62.5%;
     box-sizing: border-box
 }
 
 body, #root{
     height: 100vh;
     margin: 0;
+    font-family: 'Titillium Web', sans-serif;
+    overflow-y:none;
 }
 
-.grid-container{
-    display: grid;
-    grid-template-areas: 'header' 'main' 'footer';
-    grid-template-rows: 5rem 1fr 5rem;
-    grid-template-columns: 1fr;
-    height: 100%;
-}
-header{
-    grid-area: header;
-    background-color:#6a6a5a;
-    color: white;
+.allContents{
     display: flex;
-    align-items: center;
-    padding: .7rem;
+    flex-direction: column;
+    height: 100vh;
 }
 
+header{
+    display: flex;
+    background-color:#22515b;
+    position:fixed;
+    width: 100%;
+    height: 2rem;
+    align-items: center;
+}
 a{
-    color: white;
     text-decoration: none;
 }
-
-a:hover{
-    color: pink;
+header a{
+    color:white;
+    text-decoration:none;
+    margin-left:5px;
 }
 
-main{
-    grid-area: main;
+header a:hover{
+    color:palevioletred;
 }
+
 
 footer{
-    grid-area: footer;
-    background-color:#6a6a5a;
-    color: white;
-    display: flex;
-    align-items: center;
+    display:flex;
+    background-color:#22515b;
     justify-content: center;
-  
+    color: white;
+    height: 40px;
+    width: 100%;
+    margin-top:auto;
 }
 
-input, select, textarea, body{
-    font-size: 1.6rem;
-    font-family: 'Titillium Web', sans-serif;;
+.products{
+    display:flex;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+    margin: 100px 20px;
+
 }
 
+
+.product img{
+    height: 10rem;
+    width: 7rem;
+}
+
+.productPrice{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 1px 2px;
+}
+
+
+.products li{
+    margin:20px 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+
+.product p{
+    color:black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+
+.product a:hover{
+    border:2px solid black;
+}
+
+.productPrice div{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.productPrice button{
+    background-color:#22515b;
+    color:white;
+    border-radius:8px;
+}
+
+.productPrice button:hover{
+    border:3px solid palevioletred;
+}

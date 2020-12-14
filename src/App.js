@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import FilterComponent from './components/FilterComponent';
 import ProductsComponent from './components/ProductsComponent';
 import data from './data.json'
 
@@ -18,6 +19,7 @@ export default class App extends Component {
                     <a href='/'>React Shopping Cart</a>
                 </header>
                 <main>
+                      <FilterComponent></FilterComponent>
                       <ProductsComponent products={this.state.products}></ProductsComponent>
                 </main>
                 <footer>

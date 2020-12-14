@@ -102,3 +102,7 @@ footer{
 .productPrice button:hover{
     border:3px solid palevioletred;
 }
+
+.filter{
+    color: red;
+}

@@ -25,7 +25,7 @@ export default class FilterComponent extends Component {
                      </option>)
                    })}
                    </select></p>
-                   <button>Go <FaSearch></FaSearch></button>
+                   <button>Go</button>
             </div>
          
          </>

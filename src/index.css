@@ -38,6 +38,9 @@ header a:hover{
     color:palevioletred;
 }
 
+main{
+    margin-top: 4rem;
+}
 
 footer{
     display:flex;
@@ -54,7 +57,7 @@ footer{
     list-style: none;
     flex-wrap: wrap;
     justify-content:space-evenly;
-    margin: 100px 20px;
+    margin: 10px;
 
 }
 
@@ -68,12 +71,11 @@ footer{
     display:flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin: 1px 2px;
+    margin:1px 2px;
 }
 
 
 .products li{
-    margin:20px 0px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow:ellipsis;
@@ -81,8 +83,7 @@ footer{
 
 .product p{
     color:black;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    
+    font-family: 'Kanit', sans-serif;
 }
 
 .product a:hover{
@@ -90,7 +91,7 @@ footer{
 }
 
 .productPrice div{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Kanit', sans-serif;
 }
 
 .productPrice button{
@@ -103,6 +104,25 @@ footer{
     border:3px solid palevioletred;
 }
 
+
 .filter{
-    margin-top:50px ;
+    display:flex;
+    align-content:space-evenly;
+    align-items: center;
+    border-bottom:1px solid #22515b;
+    border-top:1px solid #22515b;
+    font-family: 'Pacifico', cursive;
+}
+
+.filter select{
+    font-family: 'Pacifico', cursive;
+    border:2px solid #22515b;
+}
+
+.filter button{
+  margin-top:2rem;
+  background-color: #22515b;
+  color: white;
+  height: 2rem;
+  border-radius:.5rem;
 }

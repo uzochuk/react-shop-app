@@ -19,9 +19,13 @@ export default class App extends Component {
                     <a href='/'>React Shopping Cart</a>
                 </header>
                 <main>
-                     <div>my filter</div>
-                      <FilterComponent></FilterComponent>
-                      <ProductsComponent products={this.state.products}></ProductsComponent>
+                      <FilterComponent
+                      count={this.state.products.length}
+                      products={this.state.products}
+                     ></FilterComponent>
+                      <ProductsComponent
+                       products={this.state.products}
+                      ></ProductsComponent>
                 </main>
                 <footer>
                     <p>&copy; {new Date().getFullYear()}</p>

@@ -4,14 +4,16 @@ import ProductsComponent from './components/ProductsComponent';
 import data from './data.json'
 
 export default class App extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state={
             products: data.products,
             size:"",
             sort:"",
         };
+       
     }
+   
     render() {
         return (
             <div className='allContents'>
@@ -22,6 +24,7 @@ export default class App extends Component {
                       <FilterComponent
                       count={this.state.products.length}
                       products={this.state.products}
+                      hello={()=>alert('hello world')}
                      ></FilterComponent>
                       <ProductsComponent
                        products={this.state.products}

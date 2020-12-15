@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import{FaSearch} from 'react-icons/fa'
 export default class FilterComponent extends Component {
     render() {
         const distinctCategory = [...new Set(this.props.products.map(x=>x.category))]
@@ -25,7 +25,7 @@ export default class FilterComponent extends Component {
                      </option>)
                    })}
                    </select></p>
-                   <button>Go</button>
+                   <button onClick={this.props.hello}>Go<FaSearch size='1rem'></FaSearch></button>
             </div>
          
          </>

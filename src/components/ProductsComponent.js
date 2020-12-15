@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { FaCartArrowDown } from 'react-icons/fa'
 import formatCurrency from '../util'
 
 export default class ProductsComponent extends Component {
@@ -17,7 +18,7 @@ export default class ProductsComponent extends Component {
                                </div>
                                <div className="productPrice">
                                    <div>{formatCurrency(product.price)}</div>
-                                   <button className='button primary'>Add to cart</button>
+                                   <button className='button primary'> <FaCartArrowDown size='1rem'></FaCartArrowDown></button>
                                </div>
                            </li>
                         )

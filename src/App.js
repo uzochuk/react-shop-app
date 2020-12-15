@@ -8,13 +8,24 @@ export default class App extends Component {
         super(props);
         this.state={
             products: data.products,
-            size:"",
-            sort:"",
+            category:"",
+            type:"",
         };
-       
+       this.filterFunction = this.filterFunction.bind(this)
+       this.selectFunction = this.selectFunction.bind(this)
     }
    
+    filterFunction=()=>{
+        alert(this.state.type, this.state.category)
+    }
+
+    selectFunction=(e)=>{
+        // set the values of category and type state to the values of the selected option
+        // this.setState({category:e.target.value})
+        alert(e.target.value)
+    }
     render() {
+      
         return (
             <div className='allContents'>
                 <header>
@@ -24,7 +35,10 @@ export default class App extends Component {
                       <FilterComponent
                       count={this.state.products.length}
                       products={this.state.products}
-                      hello={()=>alert('hello world')}
+                      filterFunction={this.filterFunction}
+                      selectFunction={this.selectFunction}
+                      category={this.state.category}
+                      type={this.state.type}
                      ></FilterComponent>
                       <ProductsComponent
                        products={this.state.products}

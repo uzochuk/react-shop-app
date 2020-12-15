@@ -12,7 +12,7 @@ export default class FilterComponent extends Component {
                <p><label for="category">Category:</label>
                <select name="category" id="categorySelect">
                    {distinctCategory.map(x => {
-                     return  (<option value={x} key={x}>
+                     return  (<option value={this.props.category} key={x}  onChange={this.props.selectFunction}>
                          {x}
                      </option>)
                    })}
@@ -20,12 +20,12 @@ export default class FilterComponent extends Component {
                    <p><label for="type">Type:</label>
                <select name="type" id="typeSelect">
                    {distinctType.map(x => {
-                     return  (<option value={x} key={x}>
+                     return  (<option value={this.props.type} key={x}  onChange={this.props.selectFunction}>
                          {x}
                      </option>)
                    })}
                    </select></p>
-                   <button onClick={this.props.hello}>Go<FaSearch size='1rem'></FaSearch></button>
+                   <button onClick={this.props.filterFunction}>Go<FaSearch size='1rem'></FaSearch></button>
             </div>
          
          </>

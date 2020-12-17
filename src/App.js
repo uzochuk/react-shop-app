@@ -8,22 +8,50 @@ export default class App extends Component {
         super(props);
         this.state={
             products: data.products,
+            Sproducts:data.products,
             category:"",
             type:"",
+
         };
-       this.filterFunction = this.filterFunction.bind(this)
-       this.selectFunction = this.selectFunction.bind(this)
-    }
-   
-    filterFunction=()=>{
-        alert(this.state.type, this.state.category)
+        
+        this.categorySelect=this.categorySelect.bind(this)
+        this.typeSelect=this.typeSelect.bind(this)
+        this.goFilter=this.goFilter.bind(this)
     }
 
-    selectFunction=(e)=>{
-        // set the values of category and type state to the values of the selected option
-        // this.setState({category:e.target.value})
-        alert(e.target.value)
+    categorySelect=(e)=>{
+    // console.log(e.target.value);
+    // set the state of category to the value of selected state
+    this.setState({
+        category:e.target.value
+    })
+   
     }
+
+    typeSelect=(e)=>{
+    //    console.log(e.target.value);
+    // set the state of type to the value of selected state
+       this.setState({
+           type:e.target.value
+       })
+    
+    }
+
+    goFilter = ()=>{
+        // when the go button is clicked in the filter component, search for the books with selected value and category
+
+        // if category or type is not selected, alert user
+        if(this.state.type === '' || this.state.category === ''){
+            alert('select "Category" and "Type".' )
+        }
+          this.setState({
+              products: data.products.filter(obj => {
+                return obj.type === this.state.type && obj.category === this.state.category
+              })
+          })
+
+    }
+  
     render() {
       
         return (
@@ -32,17 +60,21 @@ export default class App extends Component {
                     <a href='/'>React Shopping Cart</a>
                 </header>
                 <main>
-                      <FilterComponent
-                      count={this.state.products.length}
-                      products={this.state.products}
-                      filterFunction={this.filterFunction}
-                      selectFunction={this.selectFunction}
-                      category={this.state.category}
-                      type={this.state.type}
-                     ></FilterComponent>
-                      <ProductsComponent
-                       products={this.state.products}
-                      ></ProductsComponent>
+                        <FilterComponent
+                        count={this.state.products.length}
+                        products={this.state.products}
+                        Sproducts={this.state.Sproducts}
+                        category={this.state.category}
+                        type={this.state.type}
+                        categorySelect={this.categorySelect}
+                        typeSelect={this.typeSelect}
+                        goFilter={this.goFilter}
+                        >
+                        </FilterComponent>
+                        <ProductsComponent
+                        products={this.state.products}
+                        >
+                        </ProductsComponent>
                 </main>
                 <footer>
                     <p>&copy; {new Date().getFullYear()}</p>

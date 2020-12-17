@@ -70,7 +70,7 @@ footer{
 .productPrice{
     display:flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin:1px 2px;
 }
 

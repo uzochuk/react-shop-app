@@ -120,9 +120,36 @@ footer{
 }
 
 .filter button{
-  margin-top:2rem;
-  background-color: #22515b;
-  color: white;
-  height: 3rem;
-  border-radius:.5rem;
+    margin-top:2rem;
+    background-color: #22515b;
+    color: white;
+    height: 3rem;
+    border-radius:.5rem;
+}
+
+header nav ul{
+    display:flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+header nav ul .cart{
+  margin-left:3rem ;
+}
+
+.detailsComponent{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.detailsComponent hr{
+    border: 1px solid #22515b;
+    width: 100%;
+}
+
+.detailsComponent .moreInfo{
+    text-align: center;
+    font-family: 'Pacifico', cursive;
 }

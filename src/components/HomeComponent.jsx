@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import{FaSearch} from 'react-icons/fa'
-import { FaCartArrowDown } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import formatCurrency from '../util'
+import AddButtonComponent from './AddButtonComponent'
 
 
 
@@ -52,7 +52,7 @@ export default class HomeComponent extends Component {
                                </div>
                                <div className="productPrice">
                                    <div>{formatCurrency(product.price)}</div>
-                                   <button className='button primary'> <FaCartArrowDown size='1rem'></FaCartArrowDown></button>
+                                   <AddButtonComponent></AddButtonComponent>
                                </div>
                            </li>
                         )

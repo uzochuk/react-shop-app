@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaBook, FaSort, FaUser } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
+import AddButtonComponent from './AddButtonComponent';
 
 export default function DetailsComponent(props) {
   // use the id to find the clicked product and display the details
@@ -12,6 +13,7 @@ export default function DetailsComponent(props) {
       {console.log(clickedProduct)}
       <img src={clickedProduct.img} alt=""/>
       <h2>{clickedProduct.name}</h2>
+      <AddButtonComponent></AddButtonComponent>
       <hr></hr>
       <p>{clickedProduct.description}</p>
       <hr></hr>

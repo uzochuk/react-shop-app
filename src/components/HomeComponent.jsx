@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import{FaSearch} from 'react-icons/fa'
-export default class FilterComponent extends Component {
-    render() {
+import { Link } from 'react-router-dom'
+import formatCurrency from '../util'
+import AddButtonComponent from './AddButtonComponent'
+
+
+
+export default class HomeComponent extends Component {
+    render(props) {
         const distinctCategory = [...new Set(this.props.Sproducts.map(x=>x.category))]
         const distinctType = [...new Set(this.props.Sproducts.map(x=>x.type))]
         
@@ -33,7 +39,26 @@ export default class FilterComponent extends Component {
                 </p>
                    <button onClick={this.props.goFilter}>Go<FaSearch size='1rem'></FaSearch></button>
             </div>
-         
+            <div>
+                <ul className='products'>
+                    {this.props.products.map((product)=>{
+                        return(
+                           <li id={product.id} key={product.id}>
+                               <div className="product">
+                                   <Link to={`/details/${product.id}/${product.name}`}>
+                                       <img src={product.img} alt={product.title}/>
+                                       <p>{product.name.substring(0,15)+'...'}</p>
+                                    </Link>
+                               </div>
+                               <div className="productPrice">
+                                   <div>{formatCurrency(product.price)}</div>
+                                   <AddButtonComponent></AddButtonComponent>
+                               </div>
+                           </li>
+                        )
+                    })}
+                </ul>
+            </div>
          </>
         )
     }

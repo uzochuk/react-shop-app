@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import FilterComponent from './components/FilterComponent';
-import ProductsComponent from './components/ProductsComponent';
+import {BrowserRouter as Router, Link, Route, Switch  } from 'react-router-dom';
+import CartComponet from './components/CartComponet';
+import DetailsComponent from './components/DetailsComponent';
+import HomeComponent from './components/HomeComponent';
+import NotFoundComponent from './components/NotFoundComponent';
 import data from './data.json'
 
 export default class App extends Component {
@@ -55,12 +58,25 @@ export default class App extends Component {
     render() {
       
         return (
+    
+        <Router>
             <div className='allContents'>
                 <header>
-                    <a href='/'>React Shopping Cart</a>
+                   <nav>
+                       <ul>
+                           <li>
+                               <Link to='/'>HOME</Link>
+                           </li>
+                           <li className='cart'>
+                               <Link to='/mycart'>MY CART</Link>
+                           </li>
+                       </ul>
+                   </nav>
                 </header>
                 <main>
-                        <FilterComponent
+                <Switch>
+                   <Route path='/' exact={true}>
+                        <HomeComponent
                         count={this.state.products.length}
                         products={this.state.products}
                         Sproducts={this.state.Sproducts}
@@ -70,16 +86,28 @@ export default class App extends Component {
                         typeSelect={this.typeSelect}
                         goFilter={this.goFilter}
                         >
-                        </FilterComponent>
-                        <ProductsComponent
-                        products={this.state.products}
-                        >
-                        </ProductsComponent>
+                        </HomeComponent>
+                    </Route> 
+                    <Route path='/mycart'>
+                        <CartComponet></CartComponet>
+                    </Route>
+                    <Route path='/details/:ID'
+                    //  children={<DetailsComponent  selectedProduct={this.state.products}></DetailsComponent>}
+                    >
+                        <DetailsComponent  products={this.state.products}></DetailsComponent>
+                    </Route>
+                   <Route path='*'>
+                       <NotFoundComponent></NotFoundComponent>
+                   </Route>
+                </Switch>
                 </main>
                 <footer>
                     <p>&copy; {new Date().getFullYear()}</p>
                 </footer>
+           
             </div>
+        </Router>
+     
         )
     }
 }

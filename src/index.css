@@ -153,3 +153,51 @@ header nav ul .cart{
     text-align: center;
     font-family: 'Pacifico', cursive;
 }
+
+.cartComponent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.emptyCart, .notEmptyCart{
+   height: 100%;
+}
+
+.cartList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    align-content: center;
+}
+
+.cartList img{
+    height: 20rem;
+    width: 15rem;
+}
+
+.cartList button{
+    background-color:rgb(255, 0, 0);
+    height: 30px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    color: white;
+}
+
+.cartTotal{
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: larger;
+    font-weight: bold;
+    background-color:  rgba(101, 184, 177, 1);
+}
+.cartTotal button{
+    background: orange;
+    border:1px solid black;
+    border-radius: 3px;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { FaShoppingCart } from 'react-icons/fa';
 import {BrowserRouter as Router, Link, Route, Switch  } from 'react-router-dom';
 import CartComponet from './components/CartComponet';
 import DetailsComponent from './components/DetailsComponent';
@@ -14,13 +15,17 @@ export default class App extends Component {
             Sproducts:data.products,
             category:"",
             type:"",
+            cartItems:[],
 
         };
         
         this.categorySelect=this.categorySelect.bind(this)
         this.typeSelect=this.typeSelect.bind(this)
         this.goFilter=this.goFilter.bind(this)
+        this.addToCart = this.addToCart.bind(this)
+        this.removeFromCart=this.removeFromCart.bind(this)
     }
+
 
     categorySelect=(e)=>{
     // console.log(e.target.value);
@@ -54,11 +59,40 @@ export default class App extends Component {
           })
 
     }
+
+    addToCart = (product) =>{ 
+
+        //  console.log(product)
+        // check if product already exists in cart. If it does, multiply the number else add the item to cart
+        // make a new copy of cart items
+        const cartItems = this.state.cartItems.slice();
+        let alreadyInCart = false;
+        cartItems.forEach(element => {
+           if(element.id === product.id){
+               cartItems.count++;
+               alreadyInCart = true;
+           }
+        });
+        if(!alreadyInCart){
+            cartItems.push({...product, count: 1})
+        }
+        this.setState({
+            cartItems:cartItems
+        })
+    }
+
+    removeFromCart = (product)=>{
+        const cartItems = this.state.cartItems.slice();
+        this.setState({
+            cartItems: cartItems.filter(x=>x.id !== product.id),
+        })
+      
+    }
   
     render() {
       
         return (
-    
+     
         <Router>
             <div className='allContents'>
                 <header>
@@ -68,7 +102,7 @@ export default class App extends Component {
                                <Link to='/'>HOME</Link>
                            </li>
                            <li className='cart'>
-                               <Link to='/mycart'>MY CART</Link>
+                               <Link to='/mycart'>My Cart <FaShoppingCart className='cartLogo'></FaShoppingCart></Link>
                            </li>
                        </ul>
                    </nav>
@@ -85,16 +119,20 @@ export default class App extends Component {
                         categorySelect={this.categorySelect}
                         typeSelect={this.typeSelect}
                         goFilter={this.goFilter}
+                        addToCart={this.addToCart}
                         >
                         </HomeComponent>
                     </Route> 
                     <Route path='/mycart'>
-                        <CartComponet></CartComponet>
+                        <CartComponet
+                        cartItems={this.state.cartItems}
+                        removeFromCart = {this.removeFromCart}
+                        ></CartComponet>
                     </Route>
                     <Route path='/details/:ID'
                     //  children={<DetailsComponent  selectedProduct={this.state.products}></DetailsComponent>}
                     >
-                        <DetailsComponent  products={this.state.products}></DetailsComponent>
+                        <DetailsComponent  products={this.state.products}  addToCart={this.addToCart}></DetailsComponent>
                     </Route>
                    <Route path='*'>
                        <NotFoundComponent></NotFoundComponent>

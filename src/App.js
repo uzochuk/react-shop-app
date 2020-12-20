@@ -6,6 +6,7 @@ import DetailsComponent from './components/DetailsComponent';
 import HomeComponent from './components/HomeComponent';
 import NotFoundComponent from './components/NotFoundComponent';
 import data from './data.json'
+import Flip from 'react-reveal/Flip';
 
 export default class App extends Component {
     constructor(props) {
@@ -102,9 +103,11 @@ export default class App extends Component {
     render() {
       
         return (
-     
+       
         <Router>
+            <Flip>
             <div className='allContents'>
+           
                 <header>
                    <nav>
                        <ul>
@@ -154,11 +157,12 @@ export default class App extends Component {
                 <footer>
                     <p>&copy; {new Date().getFullYear()}</p>
                 </footer>
-           
+                
             </div>
+            </Flip>
         </Router>
-     
-        )
+      
+      )
     }
 }
 

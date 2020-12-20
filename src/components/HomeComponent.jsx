@@ -13,7 +13,8 @@ export default class HomeComponent extends Component {
         const distinctType = [...new Set(this.props.Sproducts.map(x=>x.type))]
         
         return (
-            <>
+            <div>
+         
             <div className='filter'>
                <p><b>{this.props.count}</b> Books available</p> 
 
@@ -61,7 +62,8 @@ export default class HomeComponent extends Component {
                     })}
                 </ul>
             </div>
-         </>
+         
+         </div>
         )
     }
 }

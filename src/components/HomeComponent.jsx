@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import{FaSearch} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import formatCurrency from '../util'
-import AddButtonComponent from './AddButtonComponent'
+import { FaCartArrowDown } from 'react-icons/fa'
 
 
 
 export default class HomeComponent extends Component {
+    
     render(props) {
         const distinctCategory = [...new Set(this.props.Sproducts.map(x=>x.category))]
         const distinctType = [...new Set(this.props.Sproducts.map(x=>x.type))]
@@ -52,7 +53,8 @@ export default class HomeComponent extends Component {
                                </div>
                                <div className="productPrice">
                                    <div>{formatCurrency(product.price)}</div>
-                                   <AddButtonComponent></AddButtonComponent>
+                                   {/* when the add to cart button is clicked add the selected product to the cartItems state */}
+                                   <button className="button primary" onClickCapture={()=>{this.props.addToCart(product)}}> <FaCartArrowDown size='1rem'></FaCartArrowDown></button>
                                </div>
                            </li>
                         )

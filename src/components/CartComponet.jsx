@@ -1,13 +1,45 @@
 import React, { Component } from 'react'
-import {  FaPlus,  FaTrash } from 'react-icons/fa';
+import {  FaEnvelope, FaHome, FaPlus,  FaTrash, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import formatCurrency from '../util';
+import Modal from 'react-modal';
 
-
-
+Modal.setAppElement('#root')
 export default class CartComponet extends Component {
+        constructor(props){
+            super(props)
+            this.state={
+                modalIsOpen:false,
+                name:'',
+                email:'',
+                address:''
+            }
+
+            this.handleInput =this.handleInput.bind(this)
+            this.createOrder=this.createOrder.bind(this)
+        }
  
- 
+        handleInput=(e)=>{
+            // console.log(this.state);
+            this.setState({
+                [e.target.name]:e.target.value,
+            })    
+        }
+
+        createOrder = (e)=>{
+            e.preventDefault();
+            const order={
+                name: this.state.name,
+                email: this.state.email,
+                address: this.state.address,
+                cartItems: this.props.cartItems
+            }
+
+            // console.log(order);
+
+            this.props.createOrder(order)
+        }
+
     render() {
         const {cartItems} = this.props;
        
@@ -47,7 +79,43 @@ export default class CartComponet extends Component {
                      <div className='cartTotal'>
                          Total:{" "}
                          {formatCurrency( cartItems.reduce((a,c)=>a + c.price * c.count, 0) )}
-                         <button className='proceedButton'>Proceed</button>
+                         <button className='proceedButton' onClickCapture={()=>{
+                             this.setState({modalIsOpen:true})
+                         }} >Proceed</button>
+                         <Modal
+                            isOpen={this.state.modalIsOpen}
+                            onRequestClose={()=>{this.setState({modalIsOpen:false})}}
+                            style={
+                                {
+                                    overlay:{background:'rgba(000, 222, 222, 0.5)'},
+                                    content:{height:"50%"}
+
+                                }
+                            } 
+                            >
+                               <div>
+                                   <form onSubmit={this.createOrder} id="checkoutForm">
+                                    <ul className="form-container">
+                                        <li>
+                                            <label htmlFor="email">Email <FaEnvelope></FaEnvelope></label>
+                                            <input type="email" name="email" id="eamil" required onChange={this.handleInput}/>
+                                        </li>
+                                        <li>
+                                            <label htmlFor="name">Name <FaUser></FaUser></label>
+                                            <input type="text" name="name" id="name" required onChange={this.handleInput}/>
+                                        </li>
+                                        <li>
+                                            <label htmlFor="address">Address <FaHome></FaHome></label>
+                                            <input type="text" name="address" id="address" required onChange={this.handleInput}/>
+                                        </li>
+                                    </ul>
+                                    <button type="submit">Checkout</button>
+                                   </form>
+                                 <button onClickCapture={()=>{
+                                     this.setState({modalIsOpen:false})
+                                 }}>close</button>
+                             </div>
+                         </Modal>
                      </div>
                  </div>
              ) }

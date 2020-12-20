@@ -15,7 +15,7 @@ export default class App extends Component {
             Sproducts:data.products,
             category:"",
             type:"",
-            cartItems:[],
+            cartItems: localStorage.getItem('cartItems')? JSON.parse(localStorage.getItem('cartItems')):[],
 
         };
         
@@ -67,18 +67,21 @@ export default class App extends Component {
         // make a new copy of cart items
         const cartItems = this.state.cartItems.slice();
         let alreadyInCart = false;
+        
         cartItems.forEach(element => {
            if(element.id === product.id){
-               cartItems.count++;
+               cartItems.count ++;
                alreadyInCart = true;
            }
         });
         if(!alreadyInCart){
-            cartItems.push({...product, count: 1})
+            cartItems.push({...product, count: 1 })
         }
         this.setState({
             cartItems:cartItems
         })
+
+        localStorage.setItem("cartItems", JSON.stringify(cartItems))
     }
 
     removeFromCart = (product)=>{
@@ -87,6 +90,13 @@ export default class App extends Component {
             cartItems: cartItems.filter(x=>x.id !== product.id),
         })
       
+        localStorage.setItem("cartItems",
+        JSON.stringify(cartItems.filter(x=>x.id !== product.id))
+        )
+    }
+
+    createOrder = (order)=>{
+        alert('order for' + order.name)
     }
   
     render() {
@@ -127,7 +137,9 @@ export default class App extends Component {
                         <CartComponet
                         cartItems={this.state.cartItems}
                         removeFromCart = {this.removeFromCart}
-                        ></CartComponet>
+                        createOrder = {this.createOrder}
+                        >
+                        </CartComponet>
                     </Route>
                     <Route path='/details/:ID'
                     //  children={<DetailsComponent  selectedProduct={this.state.products}></DetailsComponent>}

@@ -46,18 +46,19 @@ export default class App extends Component {
     
     }
 
-    goFilter = ()=>{
+    goFilter = (e)=>{
         // when the go button is clicked in the filter component, search for the books with selected value and category
 
         // if category or type is not selected, alert user
         if(this.state.type === '' || this.state.category === ''){
             alert('select "Category" and "Type".' )
-        }
+        }else{
           this.setState({
               products: data.products.filter(obj => {
                 return obj.type === this.state.type && obj.category === this.state.category
               })
           })
+        }
 
     }
 
